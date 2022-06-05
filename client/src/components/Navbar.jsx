@@ -26,9 +26,9 @@ function Navbar() {
           <Badge badgeContent={4} color="error">
             <Notification ></Notification>
           </Badge>
-          <Avatar src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" sx={{width:30,height:30}} onClick={()=>{setOpen(!open)}}></Avatar>
+          {/* <Avatar src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" sx={{width:30,height:30}} onClick={()=>{setOpen(!open)}}></Avatar> */}
         </Icons>
-        <Menu
+        {/* <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         open={open}
@@ -45,7 +45,7 @@ function Navbar() {
         <MenuItem>Profile</MenuItem>
         <MenuItem>My account</MenuItem>
         <MenuItem>Logout</MenuItem>
-      </Menu>
+      </Menu> */}
       </StyledToolbar>
     </AppBar>
   )

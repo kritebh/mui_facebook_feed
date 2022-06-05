@@ -19,7 +19,7 @@ function Feed() {
   return (
     <Box bgcolor="skyblue" flex={4}  p={{ xs: 0, md: 2 }}>
       {isLoading?"Loading":posts.map((post)=>{
-        return <Post post={post} key={post._id}/>
+        return <Post post={post} key={post._id} />
       })}
      </Box>
   )

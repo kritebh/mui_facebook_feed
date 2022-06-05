@@ -26,7 +26,7 @@ app.listen(port,()=>{
 })
 
 
-
+//TODO : Try Catch Block
 
 //API endpoints
 
@@ -54,9 +54,9 @@ app.get("/getcomment/:id",(req,res)=>{
 
 app.post("/addcomment",(req,res)=>{
 
-
     commentModel.create(req.body).then(data=>{
-        res.json(data)
+        console.log(data)
+        res.sendStatus(200);
     })
 
 })
