@@ -39,8 +39,6 @@ function Comment({ comment, postId, getComment }) {
   };
 
 
-
-
   return (
     <Box p={3}>
       {comment.length>0 ? 

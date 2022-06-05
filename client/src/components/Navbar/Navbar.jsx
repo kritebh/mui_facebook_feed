@@ -21,7 +21,7 @@ function Navbar() {
     <AppBar position="sticky">
       <StyledToolbar>
         <Typography variant="h6" sx={{display:{xs:"none",sm:"block"}}}>Facebook Feed</Typography>
-        <Typography variant="h5" sx={{display:{xs:"block",sm:"none"}}}>F</Typography>
+        <Typography variant="h5" sx={{display:{xs:"block",sm:"none"}}}>FF</Typography>
         <Icons>
           <Badge badgeContent={4} color="error">
             <Notification ></Notification>

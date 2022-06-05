@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {
   Stack,
+  Box,
   Grid,
   Card,
   CardContent,
@@ -14,8 +15,10 @@ function UserName({setUsername}) {
     const [newusername,setNewUsername] = useState("")
 
     function handleUsername(){
-        localStorage.setItem("username",newusername.toLowerCase())
-        setUsername(localStorage.getItem("username"))
+        if(newusername){
+            localStorage.setItem("username",newusername.toLowerCase())
+            setUsername(localStorage.getItem("username"))
+        }
     }
 
 
@@ -34,7 +37,7 @@ function UserName({setUsername}) {
           sx={{ textAlign: "center" }}
         ></CardHeader>
         <CardContent>
-          <Stack direction="row" alignItems="center" spacing={2}>
+          <Stack alignItems="center" spacing={2}>
             <TextField
               variant="outlined"
               placeholder="Eg. Your First Name"
@@ -43,8 +46,9 @@ function UserName({setUsername}) {
               margin="dense"
               value={newusername}
               onChange={(e)=>{setNewUsername(e.target.value)}}
+              helperText="Enter your old username or you can choose a new one"
             />
-            <Button variant="contained" onClick={handleUsername}>Submit</Button>
+            <Button variant="contained" sx={{ height: 40,width:"30%" }} onClick={handleUsername}>Submit</Button>
           </Stack>
         </CardContent>
       </Card>

@@ -39,7 +39,8 @@ app.get("/posts",(req,res)=>{
 
 app.post("/posts",(req,res)=>{
     postModel.create(req.body).then(data=>{
-        res.json(data)
+        console.log(data)
+        res.sendStatus(200);
     })
 })
 
@@ -55,7 +56,7 @@ app.get("/getcomment/:id",(req,res)=>{
 app.post("/addcomment",(req,res)=>{
 
     commentModel.create(req.body).then(data=>{
-        console.log(data)
+        // console.log(data)
         res.sendStatus(200);
     })
 

@@ -9,9 +9,6 @@ const postsSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    description:{
-        type:String,
-    },
     createdAt:{
         type:String,
         required:true,
