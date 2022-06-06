@@ -9,56 +9,27 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
-//Importing Models
-const commentModel = require("./Models/commentModel")
-const postModel = require("./Models/postModel")
-
 
 //Database Connection
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URL,()=>{
+    console.log("Database Connected")
+})
 
 
 //Starting The Server
-
 const port = process.env.PORT || 8000
 app.listen(port,()=>{
     console.log(`Server is running at ${port}`)
 })
 
 
-//TODO : Try Catch Block
-
 //API endpoints
 
-app.get("/posts",(req,res)=>{
-    postModel.find({}).then(data=>{
-        res.json(data)
-    })
-})
+/********** Posts Routes **********/
+const posts = require("./routes/posts")
+app.use(posts)
 
+/********** Comments Routes **********/
 
-app.post("/posts",(req,res)=>{
-    postModel.create(req.body).then(data=>{
-        console.log(data)
-        res.sendStatus(200);
-    })
-})
-
-
-app.get("/getcomment/:id",(req,res)=>{
-
-    commentModel.find({postId:req.params.id}).then(data=>{
-        res.json(data)
-    })
-
-})
-
-app.post("/addcomment",(req,res)=>{
-
-    commentModel.create(req.body).then(data=>{
-        // console.log(data)
-        res.sendStatus(200);
-    })
-
-})
-
+const comments = require("./routes/comments")
+app.use(comments)

@@ -16,14 +16,10 @@ function Posts({ post }) {
 
   function handleComment() {
     setIsCommentOpen(!isCommentOpen);
-    console.log(comment.length);
-
     getComment();
   }
 
   function getComment() {
-    console.log("Api called");
-
     fetch(`http://localhost:8000/getcomment/${post._id}`)
       .then((data) => data.json())
       .then((data) => {

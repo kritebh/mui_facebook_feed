@@ -34,7 +34,6 @@ function Comment({ comment, postId, getComment }) {
       .then((data) => {
         setAddComment("");
         getComment();
-        // console.log(data);
       });
   };
 
@@ -44,10 +43,9 @@ function Comment({ comment, postId, getComment }) {
       {comment.length>0 ? 
       <Paper style={{ padding: "40px 20px" }}>
         {comment.map((c) => {
-          console.log(c);
           return (
-            <>
-              <Grid container wrap="nowrap" spacing={2} key={c._id}>
+            <Box key={c._id}>
+              <Grid container wrap="nowrap" spacing={2} >
                 <Grid item>
                   <Avatar>{c.username.substr(0, 1)}</Avatar>
                 </Grid>
@@ -57,7 +55,7 @@ function Comment({ comment, postId, getComment }) {
                 </Grid>
               </Grid>
               <Divider variant="fullWidth" sx={{ margin: "15px 0" }} />
-            </>
+            </Box>
           );
         })}
       </Paper>
