@@ -40,11 +40,11 @@ function Posts({ post }) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={post.title}
+        title={post.username}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {post.description ? post.description : post.title}
+        <Typography variant="body2" >
+          {post.title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
