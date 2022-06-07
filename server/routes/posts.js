@@ -15,8 +15,7 @@ router.route("/posts")
             res.sendStatus(500)
             console.log(e.message)
         }
-
-
+        
     })
     .post(async (req, res) => {
         try{

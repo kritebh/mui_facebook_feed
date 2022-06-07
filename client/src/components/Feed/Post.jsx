@@ -10,7 +10,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Comment from "../Comment/Comment";
 import { useState } from "react";
 
-function Posts({ post }) {
+function Posts({ post,socket }) {
   const [isCommentOpen, setIsCommentOpen] = useState(false);
   const [comment, setComment] = useState([]);
 
@@ -53,7 +53,7 @@ function Posts({ post }) {
         </IconButton>
       </CardActions>
       {isCommentOpen ? (
-        <Comment comment={comment} postId={post._id} getComment={getComment} />
+        <Comment comment={comment} post={post} getComment={getComment} socket={socket}/>
       ) : (
         ""
       )}

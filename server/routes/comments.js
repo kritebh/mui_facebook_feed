@@ -15,7 +15,6 @@ router.get("/getcomment/:id", async (req, res) => {
         console.log(e.message)
     }
 
-
 })
 
 router.post("/addcomment", async (req, res) => {

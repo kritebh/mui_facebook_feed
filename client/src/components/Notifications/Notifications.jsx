@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { io } from "socket.io-client";
 import { Box, Badge, styled, Typography } from "@mui/material";
 import MuiPaper from "@mui/material/Paper";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
@@ -8,9 +7,10 @@ import MuiListItem from "@mui/material/ListItem";
 import MuiDivider from "@mui/material/Divider";
 import Notification from "@mui/icons-material/Notifications";
 import Popper from "@mui/material/Popper";
-
 import Grow from "@mui/material/Grow";
 
+
+//MUI styled Component
 const Icons = styled(Box)(() => ({
   display: "flex",
   gap: "10px",
@@ -34,22 +34,19 @@ const Divider = styled(MuiDivider)(({ theme }) => ({
   margin: "5px",
 }));
 
-function Notifications() {
+//Notifications Main Function
+
+function Notifications({socket}) {
+ 
   const [notifications, setNotifications] = useState([]);
-
   const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const anchorRef = React.useRef();
 
-  // function handleNotification() {
-  //   console.log(isNotificationPanelOpen);
-  // }
-
-  useEffect(() => {
-    const socket = io("http://localhost:5000");
-    console.log(socket.on("firstevent",(msg)=>{
-      console.log(msg);
-    }));
-  }, []);
+  useEffect(()=>{
+      socket?.on("getNotification",data=>{
+        setNotifications((prev)=> [...prev,`${data.senderName} commented on your post`])
+      })
+  },[socket])
 
   return (
     <Box>
@@ -89,7 +86,7 @@ function Notifications() {
                 >
                   <List>
                     {notifications.map((message, index) => (
-                      <React.Fragment key={message.id}>
+                      <React.Fragment key={index}>
                         <ListItem alignItems="flex-start">
                           <Typography gutterBottom>
                             <span

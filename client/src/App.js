@@ -6,6 +6,7 @@ import { Box, Stack } from "@mui/material"
 import UserName from "./components/Auth/UserName";
 import Add from "./components/Feed/Add"
 import { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 import "./App.css"
 function App() {
 
@@ -14,10 +15,17 @@ function App() {
   const [username, setUsername] = useState(initialUsername)
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [socket,setSocket] = useState(null)
 
   useEffect(() => {
     getPosts()
+    setSocket(io("http://localhost:5000"));
   }, [])
+
+
+  useEffect(() => {
+    socket?.emit("newUser",username)
+  },[socket,username]);
 
 
   function getPosts() {
@@ -37,10 +45,10 @@ function App() {
 
   return (
     <Box>
-      <Navbar />
+      <Navbar socket={socket} />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
-        <Feed posts={posts} isLoading={isLoading} />
+        <Feed posts={posts} isLoading={isLoading} socket={socket} />
         <Rightbar />
       </Stack>
       <Add username={username} getPosts={getPosts} />

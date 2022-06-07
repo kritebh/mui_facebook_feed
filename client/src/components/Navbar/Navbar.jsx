@@ -10,14 +10,14 @@ const StyledToolbar = styled(Toolbar)({
 
 
 
-function Navbar() {
+function Navbar({socket}) {
 
   return (
     <AppBar position="sticky">
       <StyledToolbar>
         <Typography variant="h6" sx={{display:{xs:"none",sm:"block"}}}>Facebook Feed</Typography>
         <Typography variant="h5" sx={{display:{xs:"block",sm:"none"}}}>FF</Typography>
-        <Notifications></Notifications>
+        <Notifications socket={socket}></Notifications>
       </StyledToolbar>
     </AppBar>
   )

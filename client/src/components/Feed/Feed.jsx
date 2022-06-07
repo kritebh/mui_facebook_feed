@@ -1,7 +1,7 @@
 import { Box ,Typography} from "@mui/material"
 import Post from './Post'
 
-function Feed({posts,isLoading}) {
+function Feed({posts,isLoading,socket}) {
     
   if(posts.length===0){
 
@@ -13,7 +13,7 @@ function Feed({posts,isLoading}) {
   return (
     <Box bgcolor="skyblue" flex={4}  p={{ xs: 0, md: 2 }}>
       {isLoading?"Loading":posts.map((post)=>{
-        return <Post post={post} key={post._id} />
+        return <Post post={post} key={post._id} socket={socket} />
       })}
      </Box>
   )

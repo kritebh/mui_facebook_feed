@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-function Comment({ comment, postId, getComment }) {
+function Comment({ comment, post, getComment,socket }) {
   const [addComment, setAddComment] = useState("");
 
   const sendComment = () => {
@@ -24,16 +24,17 @@ function Comment({ comment, postId, getComment }) {
       },
       body: JSON.stringify({
         username: localStorage.getItem("username"),
-        postId: postId,
+        postId: post._id,
         comment: addComment,
       }),
     })
       .then((data) => {
-        data.json();
-      })
-      .then((data) => {
         setAddComment("");
         getComment();
+        socket?.emit("sendNotification",{
+          senderName : localStorage.getItem("username"),
+          receiverName : post.username
+        })
       });
   };
 

@@ -25,10 +25,17 @@ io.on("connection",(socket)=>{
 
  
     socket.on("newUser",(username)=>{
+        console.log("connected")
         addNewUser(username,socket.id)
     })
 
 
+    socket.on("sendNotification",({senderName,receiverName})=>{
+        const receiver = getUser(receiverName)
+        io.to(receiver.socketId).emit("getNotification",{
+            senderName
+        })
+    })
 
     socket.on("disconnect",()=>{
        removeUser(socket.id)
