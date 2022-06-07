@@ -18,23 +18,34 @@
     PORT = 8000
 ```
 
-3. Now We can start server (Open Two Terminal)
+3. Now We can start server (Open `Three` Terminal)
+
+First Terminal
 
 ```bash
     cd client
     yarn start
 ```
-On the second Terminal
+On the Second Terminal
 
 ```bash
     cd server
-    node index.js # You can also use nodemon index.js
+    node index.js
 ```
+This will run the express server at 8000 port
 
-4. Both Server should be running now
+On the Third Terminal
+
+```bash
+    cd server
+    node notification.js
+```
+This will run the socket.io server at 5000 port
+
+4. All Server should be running now
 
      Visit http://localhost:3000 and we can access the website. 
 
 5. Enter your username (Eg. Your first name)
 
-6. Now You can see all the posts, comments and you can create a post also by clicking on Plus (+) Icon at bottom right corner.
+6. Now You can see all the posts, comments and you can create a post by clicking on Plus (+) Icon at bottom right corner.
