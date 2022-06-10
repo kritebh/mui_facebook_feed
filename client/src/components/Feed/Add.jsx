@@ -10,6 +10,8 @@ import {
   Avatar,
   Button,
   Stack,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -26,9 +28,16 @@ const UserBox = styled(Box)({
 });
 
 function Add({ username, getPosts }) {
-  const [open, setOpen] = useState(false);
-
+  const [addModelOpen, setAddModelOpen] = useState(false);
+  const [notifyOpen, setNotifyOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setNotifyOpen(false);
+  };
 
   function handlePostContent() {
     fetch("http://localhost:8000/posts", {
@@ -46,8 +55,9 @@ function Add({ username, getPosts }) {
         data.json();
       })
       .then((data) => {
-        setOpen(false);
+        setAddModelOpen(false);
         setPostContent("");
+        setNotifyOpen(true);
         getPosts();
       });
   }
@@ -57,15 +67,15 @@ function Add({ username, getPosts }) {
       <Tooltip
         title="Add Post"
         sx={{ position: "fixed", bottom: 16, left: 16 }}
-        onClick={(e) => setOpen(true)}
+        onClick={(e) => setAddModelOpen(true)}
       >
         <Fab color="primary" aria-label="add">
           <AddIcon />
         </Fab>
       </Tooltip>
       <StyledModal
-        open={open}
-        onClose={(e) => setOpen(false)}
+        open={addModelOpen}
+        onClose={(e) => setAddModelOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -101,6 +111,23 @@ function Add({ username, getPosts }) {
           </Stack>
         </Box>
       </StyledModal>
+        <Snackbar
+         anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right"
+        }}
+          open={notifyOpen}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Post Created Successfully
+          </Alert>
+        </Snackbar>
     </>
   );
 }
