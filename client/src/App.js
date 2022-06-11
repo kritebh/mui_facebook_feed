@@ -1,7 +1,7 @@
-import Sidebar from "./components/Nav/sidebar/Sidebar"
+import Sidebar from "./components/nav/sidebar/Sidebar"
 import FeedContainer from "./components/feed/feedcontainer/FeedContainer";
-import Navbar from "./components/Nav/navbar/Navbar";
-import Rightbar from "./components/Nav/rightbar/Rightbar";
+import Navbar from "./components/nav/navbar/Navbar";
+import Rightbar from "./components/nav/rightbar/Rightbar";
 import { Box, Stack } from "@mui/material"
 import UserName from "./components/username/UserName";
 import AddPost from "./components/feed/addpost/Add"
