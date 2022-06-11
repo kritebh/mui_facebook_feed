@@ -6,8 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Comment from "../Comment/Comment";
+import Comment from "../comment/Comment";
 import { useState } from "react";
 
 function Posts({ post,socket }) {

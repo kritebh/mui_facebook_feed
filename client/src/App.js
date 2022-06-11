@@ -1,10 +1,10 @@
-import Sidebar from "./components/Navbar/Sidebar"
-import Feed from "./components/Feed/Feed";
-import Navbar from "./components/Navbar/Navbar";
-import Rightbar from "./components/Navbar/Rightbar";
+import Sidebar from "./components/Nav/sidebar/Sidebar"
+import FeedContainer from "./components/feed/feedcontainer/FeedContainer";
+import Navbar from "./components/Nav/navbar/Navbar";
+import Rightbar from "./components/Nav/rightbar/Rightbar";
 import { Box, Stack } from "@mui/material"
-import UserName from "./components/Auth/UserName";
-import Add from "./components/Feed/Add"
+import UserName from "./components/username/UserName";
+import AddPost from "./components/feed/addpost/Add"
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import "./App.css"
@@ -48,10 +48,10 @@ function App() {
       <Navbar socket={socket} />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
-        <Feed posts={posts} isLoading={isLoading} socket={socket} />
+        <FeedContainer posts={posts} isLoading={isLoading} socket={socket} />
         <Rightbar />
       </Stack>
-      <Add username={username} getPosts={getPosts} />
+      <AddPost username={username} getPosts={getPosts} />
     </Box>
   );
 }

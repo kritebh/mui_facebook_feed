@@ -1,7 +1,7 @@
 import React from 'react'
 import {AppBar, Toolbar, Typography, styled} from "@mui/material"
 
-import Notifications from "../Notifications/Notifications"
+import Notifications from "../../notifications/Notifications"
 
 const StyledToolbar = styled(Toolbar)({
   display:"flex",
