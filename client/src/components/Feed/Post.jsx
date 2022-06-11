@@ -35,11 +35,6 @@ function Posts({ post,socket }) {
             {post.username.substr(0, 1)}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={post.username}
       />
       <CardContent>
