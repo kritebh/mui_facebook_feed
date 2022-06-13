@@ -35,13 +35,13 @@ const Divider = styled(MuiDivider)(({ theme }) => ({
 }));
 
 //Notifications Main Function
-
 function Notifications({socket}) {
  
   const [notifications, setNotifications] = useState([]);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef();
 
+  // Send Notification to post author
   useEffect(()=>{
       socket?.on("getNotification",data=>{
         setNotifications((prev)=> [...prev,`${data.senderName} commented on your post`])

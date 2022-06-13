@@ -18,6 +18,7 @@ function Posts({ post,socket }) {
     getComment();
   }
 
+  // Function to get all comment of specific post
   function getComment() {
     fetch(`http://localhost:8000/getcomment/${post._id}`)
       .then((data) => data.json())

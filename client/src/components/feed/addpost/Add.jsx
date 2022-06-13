@@ -32,6 +32,7 @@ function Add({ username, getPosts }) {
   const [notifyOpen, setNotifyOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
 
+  // Add Tooltip
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -39,6 +40,7 @@ function Add({ username, getPosts }) {
     setNotifyOpen(false);
   };
 
+  // Fetch Latest Added Post
   function handlePostContent() {
     fetch("http://localhost:8000/posts", {
       method: "POST",

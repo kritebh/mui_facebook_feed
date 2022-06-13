@@ -15,6 +15,7 @@ import SendIcon from "@mui/icons-material/Send";
 function Comment({ comment, post, getComment,socket }) {
   const [addComment, setAddComment] = useState("");
 
+  // Upload Comment
   const sendComment = () => {
     fetch("http://localhost:8000/addcomment", {
       method: "POST",

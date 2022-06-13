@@ -13,6 +13,7 @@ function UserName({setUsername}) {
 
     const [newusername,setNewUsername] = useState("")
 
+    // Set New User
     function handleUsername(){
         if(newusername){
             localStorage.setItem("username",newusername.toLowerCase())

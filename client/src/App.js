@@ -17,17 +17,19 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [socket,setSocket] = useState(null)
 
+  // Initialize Socket and Fetch Posts
   useEffect(() => {
     getPosts()
     setSocket(io("http://localhost:5000"));
   }, [])
 
 
+  // Set Active User
   useEffect(() => {
     socket?.emit("newUser",username)
   },[socket,username]);
 
-
+  // Fetch Post Function
   function getPosts() {
     fetch("http://localhost:8000/posts")
       .then(data => data.json())
@@ -37,6 +39,8 @@ function App() {
       })
   }
 
+
+  // Check For User
   if (!username) {
     return (
       <UserName setUsername={setUsername} />
