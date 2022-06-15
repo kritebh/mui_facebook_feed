@@ -2,7 +2,6 @@ import { Box ,Typography} from "@mui/material"
 import Post from '../post/Post'
 
 function Feed({posts,isLoading,socket}) {
-      console.log(posts)
   if(posts.length===0){
     return <Box bgcolor="skyblue" flex={4}  p={{ xs: 0, md: 2 }}>
         <Typography variant="h6" color="gray" textAlign="center">Add Some Posts </Typography>

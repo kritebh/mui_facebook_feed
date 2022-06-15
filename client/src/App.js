@@ -20,9 +20,13 @@ function App() {
   // Initialize Socket and Fetch Posts
   useEffect(() => {
     getPosts()
-    setSocket(io("http://localhost:5000"));
   }, [])
-
+  
+  useEffect(()=>{
+    if(username){
+      setSocket(io("http://localhost:5000"));
+    }
+  },[username])
 
   // Set Active User
   useEffect(() => {
@@ -49,7 +53,7 @@ function App() {
 
   return (
     <Box>
-      <Navbar socket={socket} />
+      <Navbar socket={socket} username={username} />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <FeedContainer posts={posts} isLoading={isLoading} socket={socket} />

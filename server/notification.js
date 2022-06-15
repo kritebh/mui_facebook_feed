@@ -25,8 +25,9 @@ io.on("connection", (socket) => {
 
 
     socket.on("newUser", (username) => {
-        console.log("connected")
+        console.log("connected", username)
         addNewUser(username, socket.id)
+
     })
 
 
