@@ -7,12 +7,13 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Comment from "../comment/Comment";
+import moment from 'moment'
 import { useState } from "react";
 
 function Posts({ post,socket }) {
   const [isCommentOpen, setIsCommentOpen] = useState(false);
   const [comment, setComment] = useState([]);
-
+  console.log(post)
   function handleComment() {
     setIsCommentOpen(!isCommentOpen);
     getComment();
@@ -36,6 +37,7 @@ function Posts({ post,socket }) {
           </Avatar>
         }
         title={post.username}
+        subheader={moment(Number(post.createdAt)).format('MMMM DD, YYYY')}
       />
       <CardContent>
         <Typography variant="body2" >
