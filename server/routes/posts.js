@@ -8,7 +8,7 @@ router.route("/posts")
     .get(async (req, res) => {
 
         try{
-            const data = await postModel.find({})
+            const data = await postModel.find({}).sort({createdAt:-1})
             res.json(data)
         }
         catch(e){
